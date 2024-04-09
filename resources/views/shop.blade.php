@@ -8,7 +8,15 @@
     @extends("layout")
 
     @section("sadrzajStranice")
-        <p>Ovo je Shop sadrzaj stranice</p>
+
+        @foreach($products as $product)
+            @if($product == "iPhone 14" || $product == "iPhone 13 pro")
+                <p>{{$product}} - SUPER SNIZENJE</p>
+            @else
+                <p>{{$product}}</p>
+            @endif
+        @endforeach
+
     @endsection
 </body>
 </html>
