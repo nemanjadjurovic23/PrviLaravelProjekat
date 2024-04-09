@@ -19,17 +19,25 @@
         <p>Sad je: {{$sat}}h</p>
 
         <div class="container">
-            @foreach($products as $product)
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">{{ $product->description }}</p>
+            <div class="row">
+                @foreach($products as $product)
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                @if(stripos($product->name, "Iphone") !== false)
+                                    <h5 class="card-title">{{ $product->name }} - SUPER SNIZENJE</h5>
+                                @else
+                                    <h5 class="card-title">{{ $product->name }}</h5>
+                                @endif
+                                    <p class="card-text">{{ $product->description }}</p>
+                                    <a href="#" class="btn btn-primary">Order</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
 
-        <script src="{{asset("js/countdown.js")}}"></script>
+                @endforeach
+            </div>
+        </div>
     @endsection
 </body>
 </html>

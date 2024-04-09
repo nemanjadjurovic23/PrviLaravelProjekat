@@ -5,18 +5,31 @@
     @endsection
 </head>
 <body>
-    @extends("layout")
+@extends("layout")
 
-    @section("sadrzajStranice")
+@section("sadrzajStranice")
 
-        @foreach($products as $product)
-            @if($product == "iPhone 14" || $product == "iPhone 13 pro")
-                <p>{{$product}} - SUPER SNIZENJE</p>
-            @else
-                <p>{{$product}}</p>
-            @endif
-        @endforeach
+    <div class="container">
+        <div class="row">
+            @foreach($products as $product)
+                <div class="col-md-4 mb-2 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            @if(stripos($product->name, "Iphone") !== false)
+                                <h5 class="card-title">{{$product->name}} - SUPER SNIZENJE</h5>
+                            @else
+                                <h5 class="card-title">{{$product->name}}</h5>
+                            @endif
+                            <p class="card-text">{{$product->description}}</p>
+                            <p class="card-text">${{$product->price}}</p>
+                            <a href="#" class="btn btn-primary">View Product</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 
-    @endsection
+@endsection
 </body>
 </html>
