@@ -5,39 +5,31 @@
     @endsection
 </head>
 <body>
-    @extends("layout")
+@extends("layout")
 
-    @section("sadrzajStranice")
+@section("sadrzajStranice")
 
-        @if ($sat >= 0 && $sat<= 12)
-            <p>Dobro jutro</p>
-        @else
-            <p>Dobar dan</p>
-        @endif
-
-        <p>Trenutno vreme je: {{$trenutnoVreme}}</p>
-        <p>Sad je: {{$sat}}h</p>
-
-        <div class="container">
-            <div class="row">
-                @foreach($products as $product)
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                @if(stripos($product->name, "Iphone") !== false)
-                                    <h5 class="card-title">{{ $product->name }} - SUPER SNIZENJE</h5>
-                                @else
-                                    <h5 class="card-title">{{ $product->name }}</h5>
-                                @endif
-                                    <p class="card-text">{{ $product->description }}</p>
-                                    <a href="#" class="btn btn-primary">Order</a>
-                            </div>
+    <div class="container">
+        <div class="row">
+            @foreach($latestAdded as $lastAdded)
+                <div class="col-md-4 mb-2 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            @if(stripos($lastAdded->name, "Iphone") !== false)
+                                <h5 class="card-title text-truncate">{{ $lastAdded->name }} - SUPER SNIZENJE</h5>
+                            @else
+                                <h5 class="card-title text-truncate">{{ $lastAdded->name }}</h5>
+                            @endif
+                            <p class="card-text text-truncate">{{ $lastAdded->description }}</p>
+                            <p class="card-text text-truncate">${{ $lastAdded->price }}</p>
+                            <a href="#" class="btn btn-primary">Order</a>
                         </div>
                     </div>
+                </div>
 
-                @endforeach
-            </div>
+            @endforeach
         </div>
-    @endsection
+    </div>
+@endsection
 </body>
 </html>

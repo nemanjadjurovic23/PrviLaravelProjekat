@@ -1,0 +1,6 @@
+.text-truncate {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Broj redova pre nego što se tekst skrati */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
