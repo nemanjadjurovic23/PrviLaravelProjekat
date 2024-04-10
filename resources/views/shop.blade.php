@@ -16,12 +16,12 @@
                     <div class="card">
                         <div class="card-body">
                             @if(stripos($product->name, "Iphone") !== false)
-                                <h5 class="card-title">{{$product->name}} - SUPER SNIZENJE</h5>
+                                <h5 class="card-title text-truncate">{{$product->name}} - SUPER SNIZENJE</h5>
                             @else
-                                <h5 class="card-title">{{$product->name}}</h5>
+                                <h5 class="card-title text-truncate">{{$product->name}}</h5>
                             @endif
-                            <p class="card-text">{{$product->description}}</p>
-                            <p class="card-text">${{$product->price}}</p>
+                            <p class="card-text text-truncate">{{$product->description}}</p>
+                            <p class="card-text text-truncate">${{$product->price}}</p>
                             <a href="#" class="btn btn-primary">View Product</a>
                         </div>
                     </div>

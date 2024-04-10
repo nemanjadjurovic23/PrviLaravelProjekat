@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\ProductsModel;
 use Illuminate\Http\Request;
 
 class HomepageController extends Controller
@@ -12,7 +12,7 @@ class HomepageController extends Controller
         $sat = date('H');
         $trenutnoVreme = date("H:i:s");
 
-        $products = Products::all();
+        $products = ProductsModel::all();
 
         return view("welcome", compact('trenutnoVreme', 'sat', 'products'));
     }
