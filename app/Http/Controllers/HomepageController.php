@@ -12,7 +12,8 @@ class HomepageController extends Controller
     {
         $products = ProductsModel::all();
 
-        $latestAdded = DB::table('products')->latest()->limit(6)->get();
+//        $latestAdded = DB::table('products')->latest()->limit(6)->get();
+        $latestAdded = ProductsModel::orderByDesc("id")->take(6)->get();
 
         return view("welcome", compact( 'products', 'latestAdded'));
     }
