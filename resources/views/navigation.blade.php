@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(Home)</span></a>
+                <a class="nav-link" href="{{ route('homeRoute') }}">Home <span class="sr-only">(Home)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/shop">Shop</a>

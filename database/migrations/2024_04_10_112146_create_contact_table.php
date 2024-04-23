@@ -15,11 +15,11 @@ return new class extends Migration
         // Create -> schema::create -> CREATE TABLE
         // function (Blueprint $table) {} -> ovo je kod koji se izvrsava. $table -> 'contact' tabela u bazi
         Schema::create('contact', function (Blueprint $table) {
-            $table->id(); // UNSIGNED (ne moze biti negativan broj), big increments (BIG INT, AUTO_INCREMENT)
-            $table->string("email", 64); // VARCHAR(64) email
-            $table->string("subject"); // VARCHAR(192) subject
-            $table->text("message"); // TEXT message
-            $table->timestamps(); // created_at, updated_at
+            $table->id();
+            $table->string("email", 64);
+            $table->string("subject");
+            $table->text("message");
+            $table->timestamps();
         });
     }
 

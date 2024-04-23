@@ -1,19 +1,26 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", [\App\Http\Controllers\HomepageController::class, 'index']);
-
+Route::get("/", [HomepageController::class, 'index'])->name('homeRoute');
 Route::view("/about", "about");
+Route::get("/shop", [ShopController::class, 'index']);
+Route::get("/contact", [ContactController::class, 'index']);
 
-Route::get("/shop", [\App\Http\Controllers\ShopController::class, 'index']);
 
-// kada se dodje na http://127.0.0.1:8000/contact -> ucitaj ContactController -> Iz tog controllera pozovi funkciju index
-Route::get("/contact", [\App\Http\Controllers\ContactController::class, 'index']);
-Route::get("/admin/allContacts", [\App\Http\Controllers\ContactController::class, 'getAllContacts']);
-Route::post("/send-contact", [\App\Http\Controllers\ContactController::class, "sendContact"]);
+Route::get("/admin/all-contacts", [ContactController::class, 'getAllContacts']);
+Route::get("/admin/delete-contact/{contact}", [ContactController::class, "deleteContact"]);
+Route::post("/send-contact", [ContactController::class, "sendContact"]);
 
-Route::get("/admin/add-product", [\App\Http\Controllers\ProductController::class, "addProductForm"]);
-Route::post("/admin/add-products", [\App\Http\Controllers\ProductController::class, "addProduct"]);
 
-Route::get("/admin/products", [\App\Http\Controllers\ProductController::class, "allProducts"]);
+Route::get("/admin/add-product", [ProductController::class, "addProductForm"]);
+Route::post("/admin/add-products", [ProductController::class, "addProduct"]);
+
+Route::get("/admin/all-products", [ProductController::class, "allProducts"]);
+Route::get("/admin/delete-product/{product}",[ProductController::class, "deleteProduct"]);
+
+Route::get("/admin/products", [ProductController::class, "allProducts"]);

@@ -36,7 +36,7 @@
             <p>Greska: {{ $errors->first() }}</p>
         @endif
 
-        @csrf <!-- dodatni sloj sigurnosti, ako nema ovo izbacuje gresku 419 Page Expired -->
+        @csrf
         <input type="email" name="email" placeholder="Unesite vasu email adresu">
         <input type="text" name="subject" placeholder="Unesite naslov poruke">
         <input type="text" name="description">

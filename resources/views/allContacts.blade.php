@@ -1,4 +1,3 @@
-
 @section("title")
 
 @endsection
@@ -6,19 +5,29 @@
 @extends("layout")
 
 @section("sadrzajStranice")
-        <div class="container">
-            <div class="row">
-                @foreach($allContacts as $contact)
-                <div class="col-md-6 mt-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p>{{$contact->email}}</p>
-                            <p>{{$contact->subject}}</p>
-                            <p>{{$contact->message}}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Message</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($allContacts as $contact)
+            <tr>
+                <td>{{ $contact->id }}</td>
+                <td>{{ $contact->email }}</td>
+                <td>{{ $contact->subject }}</td>
+                <td>{{ $contact->message }}</td>
+                <td>
+                    <a class="btn btn-danger" href="/admin/delete-contact/{{$contact->id}}">Obrisi</a>
+                    <a class="btn btn-success" href="{{ url('/admin/edit-contact/{contact}') }}">Edituj</a>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection

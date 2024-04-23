@@ -36,7 +36,21 @@ class ProductController extends Controller
     public function allProducts()
     {
         $allProducts = ProductsModel::all();
-        return view("products", compact("allProducts"));
+        return view("allProducts", compact("allProducts"));
     }
 
+    public function deleteProduct($product)
+    {
+        // SELECT * FROM products WHERE id = $product LIMIT 1
+        $singleProduct = ProductsModel::where(['id' => $product])->first();
+
+        if ($singleProduct === null) {
+            die("OVAJ PROIZVOD NE POSTOJI");
+        }
+
+        $singleProduct->delete();
+
+        // /admin/all-products -> delete -> back()
+        return redirect()->back();
+    }
 }
