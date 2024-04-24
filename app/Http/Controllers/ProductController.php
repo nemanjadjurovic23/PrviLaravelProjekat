@@ -10,10 +10,10 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         $request->validate([
-            "name" => "required|string",
+            "name" => "required|string|unique:products",
             "description" => "required|string",
-            "amount" => "required|integer",
-            "price" => "required|numeric",
+            "amount" => "required|integer|min:0",
+            "price" => "required|min:0",
             "image" => "required|string"
         ]);
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
             "image" => $request->get("image")
         ]);
 
-        return redirect("/admin/products");
+        return redirect()->route("sviProizvodi");
     }
 
     public function addProductForm()
@@ -41,7 +41,6 @@ class ProductController extends Controller
 
     public function deleteProduct($product)
     {
-        // SELECT * FROM products WHERE id = $product LIMIT 1
         $singleProduct = ProductsModel::where(['id' => $product])->first();
 
         if ($singleProduct === null) {
@@ -50,7 +49,6 @@ class ProductController extends Controller
 
         $singleProduct->delete();
 
-        // /admin/all-products -> delete -> back()
         return redirect()->back();
     }
 }

@@ -23,8 +23,8 @@
                 <td>{{ $contact->subject }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>
-                    <a class="btn btn-danger" href="/admin/delete-contact/{{$contact->id}}">Obrisi</a>
-                    <a class="btn btn-success" href="{{ url('/admin/edit-contact/{contact}') }}">Edituj</a>
+                    <a class="btn btn-danger" href="{{ route('deleteContact', ['contact' => $contact->id]) }}">Delete</a>
+                    <a class="btn btn-success" href="{{ url('/admin/edit-contact/{contact}') }}">Edit</a>
                 </td>
             </tr>
         @endforeach
