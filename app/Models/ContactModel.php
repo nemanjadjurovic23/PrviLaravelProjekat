@@ -11,7 +11,6 @@ class ContactModel extends Model
 
     protected $table = "contact";
 
-    // $fillable -> polja koja se mogu modifikovati i koristiti
     protected $fillable = [
         "email", "subject", "message"
     ];

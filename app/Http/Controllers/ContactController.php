@@ -21,12 +21,11 @@ class ContactController extends Controller
     public function sendContact(Request $request)
     {
         $request->validate([
-            "email" => "required|string", // if(isset($_POST['email]) && is_string($_POST['email'])
+            "email" => "required|string",
             "subject" => "required|string",
-            "description" => "required|min:5|string", // description mora biti barem 5 slova
+            "description" => "required|min:5|string",
         ]);
 
-        // $sql->query("INSERT INTO contact (email, subject, description) VALUES ('$email', '$subject', '$description'")
         ContactModel::create([
             "email" => $request->get("email"),
             "subject" => $request->get("subject"),
@@ -46,5 +45,34 @@ class ContactController extends Controller
         $contact->delete();
 
         return redirect()->back();
+    }
+
+    public function editContact($contact)
+    {
+        $singleContact = ContactModel::where(['id'=>$contact])->first();
+
+        if ($singleContact === null) {
+            die("Contact not found");
+        }
+
+        return view("edit-contact", compact('singleContact'));
+    }
+
+    public function updateContact(Request $request, $contact)
+    {
+        $request->validate([
+           "email" => "required|string",
+           "subject" => "required|string",
+           "message" => "required|min:5|string"
+        ]);
+
+        $contactToUpdate = ContactModel::findOrFail($contact);
+        $contactToUpdate->update([
+           "email" => $request->get("email"),
+           "subject" => $request->get("subject"),
+           "message" => $request->get("message")
+        ]);
+
+        return redirect()->route("sviKontakti")->with("success", "Kontak je uspesno azuriran");
     }
 }
