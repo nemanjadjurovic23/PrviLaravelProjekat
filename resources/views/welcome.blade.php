@@ -30,18 +30,44 @@
             @endforeach
         </div>
     </div>
-    <form method="POST" action="/send-contact">
+    </div>
 
-        @if($errors->any())
-            <p>Greska: {{ $errors->first() }}</p>
-        @endif
+    <div class="container">
+        <h3>Contact Form</h3>
+        <form method="POST" action="/send-contact" class="mt-4">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @csrf
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="email" class="form-label">Email adresa</label>
+                    <input type="email" name="email" id="email" class="form-control"
+                           placeholder="Unesite vašu email adresu">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="subject" class="form-label">Naslov poruke</label>
+                    <input type="text" name="subject" id="subject" class="form-control"
+                           placeholder="Unesite naslov poruke">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="description" class="form-label">Opis poruke</label>
+                    <textarea name="description" id="description" class="form-control"
+                              placeholder="Unesite opis poruke"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Pošalji poruku</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        @csrf
-        <input type="email" name="email" placeholder="Unesite vasu email adresu">
-        <input type="text" name="subject" placeholder="Unesite naslov poruke">
-        <input type="text" name="description">
-        <button>Posalji poruku</button>
-    </form>
 @endsection
 </body>
 </html>
