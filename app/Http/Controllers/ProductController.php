@@ -52,29 +52,14 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function editProduct($product)
+    public function editProduct(ProductsModel $product)
     {
-        $singleProduct = ProductsModel::where(['id' => $product])->first();
-
-        if($singleProduct === null) {
-            die("OVAJ PROIZVOD NE POSTOJI");
-        }
-
-        return view("edit-product", compact('singleProduct'));
+        return view("edit-product", compact('product'));
     }
 
-    public function updateProduct(Request $request, $product)
+    public function updateProduct(Request $request, ProductsModel $product)
     {
-        $request->validate([
-            'name'=> 'string|required',
-            'description'=> 'string|required',
-            'amount'=> 'integer|min:0',
-            'price'=> 'integer|min:0',
-            'image'=> 'string'
-        ]);
-
-        $productToUpdate = ProductsModel::findOrFail($product);
-        $productToUpdate->update([
+        $product->update([
             "name" => $request->get("name"),
             "description" => $request->get("description"),
             "amount" => $request->get("amount"),
