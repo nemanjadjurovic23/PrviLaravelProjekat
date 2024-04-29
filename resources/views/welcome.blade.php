@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
     @section("title")
-        Dashboard
+        Home
     @endsection
 </head>
 <body>
