@@ -20,9 +20,9 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get("/", [HomepageController::class, 'index'])->name('homeRoute');
-Route::view("/about", "about");
-Route::get("/shop", [ShopController::class, 'index']);
-Route::get("/contact", [ContactController::class, 'index']);
+Route::view("/about", "about")->name('about');
+Route::get("/shop", [ShopController::class, 'index'])->name('shop');
+Route::get("/contact", [ContactController::class, 'index'])->name('contact');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group(function () {
 

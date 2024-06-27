@@ -34,7 +34,7 @@
 
     <div class="container">
         <h3>Contact Form</h3>
-        <form method="POST" action="/send-contact" class="mt-4">
+        <form method="POST" action="/admin/send-contact" class="mt-4">
             @if($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -47,22 +47,22 @@
             @csrf
             <div class="row">
                 <div class="col-md-12 mb-3">
-                    <label for="email" class="form-label">Email adresa</label>
+                    <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control"
-                           placeholder="Unesite vašu email adresu">
+                           placeholder="Email">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="subject" class="form-label">Naslov poruke</label>
+                    <label for="subject" class="form-label">Title</label>
                     <input type="text" name="subject" id="subject" class="form-control"
-                           placeholder="Unesite naslov poruke">
+                           placeholder="Title">
                 </div>
                 <div class="col-md-12 mb-3">
-                    <label for="description" class="form-label">Opis poruke</label>
+                    <label for="description" class="form-label">Message</label>
                     <textarea name="description" id="description" class="form-control"
-                              placeholder="Unesite opis poruke"></textarea>
+                              placeholder="Message"></textarea>
                 </div>
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Pošalji poruku</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
                 </div>
             </div>
         </form>
