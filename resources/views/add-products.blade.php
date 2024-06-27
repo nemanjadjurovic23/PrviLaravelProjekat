@@ -12,7 +12,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="/admin/add-products">
+                    <form method="POST" action="{{ route('saveProduct') }}">
                         @if($errors->all->any())
                             @foreach($errors as $error)
                                 <p>{{ $error }}</p>

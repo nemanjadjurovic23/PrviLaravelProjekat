@@ -16,13 +16,13 @@ class ProductController extends Controller
     {
         $this->productRepo = new ProductRepository();
     }
-    public function addProduct(AddProductRequest $request)
+    public function saveProduct(AddProductRequest $request)
     {
         $this->productRepo->createNew($request);
-        return redirect()->route("sviProizvodi");
+        return redirect()->route("allProducts");
     }
 
-    public function addProductForm()
+    public function addProduct()
     {
         return view("add-products");
     }
@@ -47,7 +47,7 @@ class ProductController extends Controller
     public function updateProduct(EditProductRequest $request, ProductsModel $product)
     {
         $this->productRepo->updateProduct($request, $product);
-        return redirect()->route("sviProizvodi")->with("success", "Proizvod uspesno azuriran.");
+        return redirect()->route("allProducts")->with("success", "Proizvod uspesno azuriran.");
     }
 
 }

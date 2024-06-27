@@ -34,7 +34,7 @@
 
     <div class="container">
         <h3>Contact Form</h3>
-        <form method="POST" action="/admin/send-contact" class="mt-4">
+        <form method="POST" action="{{ route('sendContact') }}" class="mt-4">
             @if($errors->any())
                 <div class="alert alert-danger">
                     <ul>

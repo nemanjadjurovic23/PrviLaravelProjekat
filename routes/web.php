@@ -26,19 +26,22 @@ Route::get("/contact", [ContactController::class, 'index'])->name('contact');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group(function () {
 
-    Route::get("/all-contacts", [ContactController::class, 'getAllContacts'])->name("sviKontakti");
-    Route::get("/delete-contact/{contact}", [ContactController::class, "deleteContact"])->name("deleteContact");
-    Route::get("/edit-contact/{contact}", [ContactController::class, "editContact"])->name("editContact");
-    Route::put("/update-contact/{contact}", [ContactController::class, "updateContact"])->name("updateContact");
-    Route::post("/send-contact", [ContactController::class, "sendContact"]);
+    Route::controller(ContactController::class)->group(function () {
+        Route::get("contact/all", 'getAllContacts')->name("allContacts");
+        Route::get("contact/delete/{contact}", 'deleteContact')->name("deleteContact");
+        Route::get("contact/edit/{contact}", 'editContact')->name("editContact");
+        Route::put("contact/update/{contact}", 'updateContact')->name("updateContact");
+        Route::post("contact/send", 'sendContact')->name("sendContact");
+    });
 
-    Route::get("/add-product", [ProductController::class, "addProductForm"]);
-    Route::post("/add-products", [ProductController::class, "addProduct"]);
-
-    Route::get("/all-products", [ProductController::class, "allProducts"])->name("sviProizvodi");
-    Route::get("/delete-product/{product}",[ProductController::class, "deleteProduct"])->name("deleteProduct");
-    Route::get("/edit-product/{product}", [ProductController::class, "editProduct"])->name("editProduct");
-    Route::put("/update-product/{product}", [ProductController::class, "updateProduct"])->name("updateProduct");
+    Route::controller(ProductController::class)->group(function () {
+        Route::get("product/add", 'addProduct')->name("addProduct");
+        Route::post('product/save', 'saveProduct')->name('saveProduct');
+        Route::get('product/all', 'allProducts')->name('allProducts');
+        Route::get('product/delete/{product}', 'deleteProduct')->name('deleteProduct');
+        Route::get('product/edit/{product}', 'editProduct')->name('editProduct');
+        Route::put('product/update/{product}', 'updateProduct')->name('updateProduct');
+    });
 
 });
 
