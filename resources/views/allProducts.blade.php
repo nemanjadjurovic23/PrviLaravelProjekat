@@ -16,7 +16,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
-                <th>Actions</th>
+                <th scope="col">Amount</th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,8 @@
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
-                    <td>{{ $product->amount }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->amount }}</td>
                     <td>
                         <a class="btn btn-danger" href="{{ route('deleteProduct', ['product' => $product->id]) }}">Delete</a>
                         <a class="btn btn-success" href="{{ route("editProduct", ['product' => $product->id]) }}">Edit</a>

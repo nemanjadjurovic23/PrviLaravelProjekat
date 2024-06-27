@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductsModel;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    private $productRepo;
+
+    public function __construct()
+    {
+        $this->productRepo = new ProductRepository();
+    }
     public function addProduct(Request $request)
     {
         $request->validate([
@@ -17,13 +24,7 @@ class ProductController extends Controller
             "image" => "required|string"
         ]);
 
-        ProductsModel::create([
-            "name" => $request->get("name"),
-            "description" => $request->get("description"),
-            "amount" => $request->get("amount"),
-            "price" => $request->get("price"),
-            "image" => $request->get("image")
-        ]);
+        $this->productRepo->createNew($request);
 
         return redirect()->route("sviProizvodi");
     }
@@ -43,8 +44,8 @@ class ProductController extends Controller
     {
         $singleProduct = ProductsModel::where(['id' => $product])->first();
 
-        if ($singleProduct === null) {
-            die("OVAJ PROIZVOD NE POSTOJI");
+        if ($singleProduct == null) {
+            die("Product does not exist");
         }
 
         $singleProduct->delete();
