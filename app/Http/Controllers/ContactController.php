@@ -32,14 +32,9 @@ class ContactController extends Controller
         return redirect()->route('shop');
     }
 
-    public function deleteContact($contact)
+    public function deleteContact(ContactModel $contact)
     {
-        $singleContact = $this->contactRepo->getContactById($contact);
-
-        if ($singleContact === null) {
-            die("Contact not found");
-        }
-        $singleContact->delete();
+        $contact->delete();
         return redirect()->back();
     }
 
