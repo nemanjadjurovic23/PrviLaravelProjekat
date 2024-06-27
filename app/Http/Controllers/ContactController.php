@@ -38,14 +38,9 @@ class ContactController extends Controller
         return redirect()->back();
     }
 
-    public function editContact($contact)
+    public function editContact(ContactModel $contact)
     {
-        $singleContact = $this->contactRepo->getContactById($contact);
-
-        if ($singleContact === null) {
-            die("Contact not found");
-        }
-        return view("edit-contact", compact('singleContact'));
+        return view("edit-contact", compact('contact'));
     }
 
     public function updateContact(Request $request, ContactModel $contact)

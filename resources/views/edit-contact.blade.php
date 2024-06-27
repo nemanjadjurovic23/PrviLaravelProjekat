@@ -5,27 +5,27 @@
 @section("sadrzajStranice")
 
     <div class="container mt-4">
-        <form method="post" action="{{ route('updateContact', $singleContact->id) }}">
+        <form method="post" action="{{ route('updateContact', $contact->id) }}">
             @csrf
             @method("put")
             <div class="form-group row justify-content-center">
                 <div class="col-md-8">
                     <input type="email" name="email" id="email" class="form-control" placeholder="Edit your email"
-                           value="{{ $singleContact->email }}">
+                           value="{{ $contact->email }}">
                 </div>
             </div>
 
             <div class="form-group row justify-content-center">
                 <div class="col-md-8">
                     <input type="text" name="subject" id="subject" class="form-control" placeholder="Edit your subject"
-                           value="{{ $singleContact->subject }}">
+                           value="{{ $contact->subject }}">
                 </div>
             </div>
 
             <div class="form-group row justify-content-center">
                 <div class="col-md-8">
                     <textarea name="message" id="message" class="form-control"
-                              placeholder="Edit your message">{{ $singleContact->message }}</textarea>
+                              placeholder="Edit your message">{{ $contact->message }}</textarea>
                 </div>
             </div>
 
