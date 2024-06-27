@@ -33,14 +33,9 @@ class ProductController extends Controller
         return view("allProducts", compact("allProducts"));
     }
 
-    public function deleteProduct($product)
+    public function deleteProduct(ProductsModel $product)
     {
-        $singleProduct = $this->productRepo->getProductById($product);
-        if ($singleProduct == null) {
-            die("Product does not exist");
-        }
-
-        $singleProduct->delete();
+        $product->delete();
         return redirect()->back();
     }
 
