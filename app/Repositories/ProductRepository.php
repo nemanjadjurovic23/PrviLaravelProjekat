@@ -24,4 +24,20 @@ class ProductRepository
             "image" => $request->get("image")
         ]);
     }
+
+    public function getProductById($id)
+    {
+        return $this->productModel->where(['id' => $id])->first();
+    }
+
+    public function updateProduct($request, ProductsModel $product)
+    {
+        $product->update([
+            "name" => $request->get("name"),
+            "description" => $request->get("description"),
+            "amount" => $request->get("amount"),
+            "price" => $request->get("price"),
+            "image" => $request->get("image")
+        ]);
+    }
 }

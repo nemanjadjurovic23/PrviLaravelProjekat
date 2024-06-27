@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProductRequest;
 use App\Models\ProductsModel;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -14,18 +15,9 @@ class ProductController extends Controller
     {
         $this->productRepo = new ProductRepository();
     }
-    public function addProduct(Request $request)
+    public function addProduct(AddProductRequest $request)
     {
-        $request->validate([
-            "name" => "required|string|unique:products",
-            "description" => "required|string",
-            "amount" => "required|integer|min:0",
-            "price" => "required|min:0",
-            "image" => "required|string"
-        ]);
-
         $this->productRepo->createNew($request);
-
         return redirect()->route("sviProizvodi");
     }
 
@@ -42,14 +34,12 @@ class ProductController extends Controller
 
     public function deleteProduct($product)
     {
-        $singleProduct = ProductsModel::where(['id' => $product])->first();
-
+        $singleProduct = $this->productRepo->getProductById($product);
         if ($singleProduct == null) {
             die("Product does not exist");
         }
 
         $singleProduct->delete();
-
         return redirect()->back();
     }
 
@@ -60,14 +50,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, ProductsModel $product)
     {
-        $product->update([
-            "name" => $request->get("name"),
-            "description" => $request->get("description"),
-            "amount" => $request->get("amount"),
-            "price" => $request->get("price"),
-            "image" => $request->get("image")
-        ]);
-
+        $this->productRepo->updateProduct($request, $product);
         return redirect()->route("sviProizvodi")->with("success", "Proizvod uspesno azuriran.");
     }
 
