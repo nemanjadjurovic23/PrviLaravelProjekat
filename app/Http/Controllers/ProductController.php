@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddProductRequest;
+use App\Http\Requests\EditProductRequest;
 use App\Models\ProductsModel;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class ProductController extends Controller
         return view("edit-product", compact('product'));
     }
 
-    public function updateProduct(Request $request, ProductsModel $product)
+    public function updateProduct(EditProductRequest $request, ProductsModel $product)
     {
         $this->productRepo->updateProduct($request, $product);
         return redirect()->route("sviProizvodi")->with("success", "Proizvod uspesno azuriran.");
