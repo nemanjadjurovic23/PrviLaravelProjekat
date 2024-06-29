@@ -16,6 +16,11 @@ class ProductController extends Controller
     {
         $this->productRepo = new ProductRepository();
     }
+
+    public function permalink(ProductsModel $product)
+    {
+        return view('products.permalink', compact('product'));
+    }
     public function saveProduct(AddProductRequest $request)
     {
         $this->productRepo->createNew($request);

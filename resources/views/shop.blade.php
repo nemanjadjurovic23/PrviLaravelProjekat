@@ -22,7 +22,7 @@
                             @endif
                             <p class="card-text text-truncate">{{$product->description}}</p>
                             <p class="card-text text-truncate">${{$product->price}}</p>
-                            <a href="#" class="btn btn-primary">View Product</a>
+                            <a href="{{ route('product.permalink', ['product' => $product->id]) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
                 </div>
