@@ -10,7 +10,7 @@
 
 @section("sadrzajStranice")
     <div class="container">
-        <form method="POST" action="{{ route('updateProduct', $product->id) }}">
+        <form method="POST" action="{{ route('product.update', $product->id) }}">
             @csrf
             @method('PUT')
             <div class="form-row mt-4">

@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-body">
                             @if(stripos($lastAdded->name, "Iphone") !== false)
-                                <h5 class="card-title text-truncate">{{ $lastAdded->name }} - SUPER SNIZENJE</h5>
+                                <h5 class="card-title text-truncate">{{ $lastAdded->name }} - SUPER SALE</h5>
                             @else
                                 <h5 class="card-title text-truncate">{{ $lastAdded->name }}</h5>
                             @endif
@@ -34,7 +34,7 @@
 
     <div class="container">
         <h3>Contact Form</h3>
-        <form method="POST" action="{{ route('sendContact') }}" class="mt-4">
+        <form method="POST" action="{{ route('contact.send') }}" class="mt-4">
             @if($errors->any())
                 <div class="alert alert-danger">
                     <ul>

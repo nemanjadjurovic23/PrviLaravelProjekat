@@ -46,6 +46,6 @@ class ContactController extends Controller
     public function updateContact(Request $request, ContactModel $contact)
     {
         $this->contactRepo->updateContact($request, $contact);
-        return redirect()->route("allContacts")->with("success", "Kontak je uspesno azuriran");
+        return redirect()->route("contact.all")->with("success", "Contact successfully updated");
     }
 }

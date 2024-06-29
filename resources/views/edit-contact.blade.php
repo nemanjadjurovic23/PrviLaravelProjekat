@@ -5,7 +5,7 @@
 @section("sadrzajStranice")
 
     <div class="container mt-4">
-        <form method="post" action="{{ route('updateContact', $contact->id) }}">
+        <form method="post" action="{{ route('contact.update', $contact->id) }}">
             @csrf
             @method("put")
             <div class="form-group row justify-content-center">

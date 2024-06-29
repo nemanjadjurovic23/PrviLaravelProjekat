@@ -23,8 +23,8 @@
                 <td>{{ $contact->subject }}</td>
                 <td>{{ $contact->message }}</td>
                 <td>
-                    <a class="btn btn-danger" href="{{ route('deleteContact', ['contact' => $contact->id]) }}">Delete</a>
-                    <a class="btn btn-success" href="{{ route('editContact', ['contact' => $contact->id]) }}">Edit</a>
+                    <a class="btn btn-danger" href="{{ route('contact.delete', ['contact' => $contact->id]) }}">Delete</a>
+                    <a class="btn btn-success" href="{{ route('contact.edit', ['contact' => $contact->id]) }}">Edit</a>
 
                 </td>
             </tr>

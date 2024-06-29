@@ -19,7 +19,7 @@ class ProductController extends Controller
     public function saveProduct(AddProductRequest $request)
     {
         $this->productRepo->createNew($request);
-        return redirect()->route("allProducts");
+        return redirect()->route("product.all");
     }
 
     public function addProduct()
@@ -47,7 +47,7 @@ class ProductController extends Controller
     public function updateProduct(EditProductRequest $request, ProductsModel $product)
     {
         $this->productRepo->updateProduct($request, $product);
-        return redirect()->route("allProducts")->with("success", "Proizvod uspesno azuriran.");
+        return redirect()->route("product.all")->with("success", "Product successfully updated.");
     }
 
 }

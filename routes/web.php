@@ -26,21 +26,21 @@ Route::get("/contact", [ContactController::class, 'index'])->name('contact');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group(function () {
 
-    Route::controller(ContactController::class)->prefix('/contact')->group(function () {
-        Route::get("/all", 'getAllContacts')->name("allContacts");
-        Route::get("/delete/{contact}", 'deleteContact')->name("deleteContact");
-        Route::get("/edit/{contact}", 'editContact')->name("editContact");
-        Route::put("/update/{contact}", 'updateContact')->name("updateContact");
-        Route::post("/send", 'sendContact')->name("sendContact");
+    Route::controller(ContactController::class)->prefix('/contact')->name('contact.')->group(function () {
+        Route::get("/all", 'getAllContacts')->name("all");
+        Route::get("/delete/{contact}", 'deleteContact')->name("delete");
+        Route::get("/edit/{contact}", 'editContact')->name("edit");
+        Route::put("/update/{contact}", 'updateContact')->name("update");
+        Route::post("/send", 'sendContact')->name("send");
     });
 
-    Route::controller(ProductController::class)->prefix('/product')->group(function () {
-        Route::get("/add", 'addProduct')->name("addProduct");
-        Route::post('/save', 'saveProduct')->name('saveProduct');
-        Route::get('/all', 'allProducts')->name('allProducts');
-        Route::get('/delete/{product}', 'deleteProduct')->name('deleteProduct');
-        Route::get('/edit/{product}', 'editProduct')->name('editProduct');
-        Route::put('/update/{product}', 'updateProduct')->name('updateProduct');
+    Route::controller(ProductController::class)->prefix('/product')->name('product.')->group(function () {
+        Route::get("/add", 'addProduct')->name("add");
+        Route::post('/save', 'saveProduct')->name('save');
+        Route::get('/all', 'allProducts')->name('all');
+        Route::get('/delete/{product}', 'deleteProduct')->name('delete');
+        Route::get('/edit/{product}', 'editProduct')->name('edit');
+        Route::put('/update/{product}', 'updateProduct')->name('update');
     });
 
 });
