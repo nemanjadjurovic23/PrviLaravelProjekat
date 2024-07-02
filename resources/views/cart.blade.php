@@ -1,10 +1,11 @@
 @extends("layout")
 
 @section("sadrzajStranice")
-
-    @foreach($cart as $product)
-        <p>{{ $product['product_id'] }}</p>
-        <p>{{ $product['amount'] }}</p>
+    @foreach($combined as $item)
+        <p>{{ $item['name'] }}</p>
+        <p>{{ $item['amount'] }}</p>
+        <p>{{ $item['price'] }}</p>
+        <p>{{ $item['total'] }}</p>
     @endforeach
 
 @endsection

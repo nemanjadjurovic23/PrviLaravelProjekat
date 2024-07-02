@@ -11,13 +11,20 @@ class ShoppingCartController extends Controller
 {
     public function index()
     {
-
-        $allProducts = array_column(Session::get('product'), 'product_id');
-        $products = ProductsModel::whereIn('id', $allProducts)->get();
-        
+        $combined = [];
+        foreach (Session::get('product', []) as $item) {
+            $product = ProductsModel::firstWhere(['id' => $item['product_id']]);
+            if($product) {
+                $combined[] = [
+                    'name' => $product->name,
+                    'amount' => $item['amount'],
+                    'price' => $product->price,
+                    'total' => $item['amount'] * $product->price,
+                ];
+            }
+        }
         return view('cart', [
-            'cart' => Session::get('product'),
-            'products' => $products,
+            'combined' => $combined,
         ]);
     }
     public function addToCart(CartAddRequest $request)
