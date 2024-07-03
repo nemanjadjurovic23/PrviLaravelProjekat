@@ -17,6 +17,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::post('/cart/add', [ShoppingCartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/cart', [ShoppingCartController::class, 'index'])->name('cart.index');
+    Route::get('/cart/finish', [ShoppingCartController::class, 'finishOrder'])->name('cart.finish');
 });
 
 
@@ -25,8 +29,7 @@ Route::view("/about", "about")->name('about');
 Route::get("/shop", [ShopController::class, 'index'])->name('shop');
 Route::get("/contact", [ContactController::class, 'index'])->name('contact');
 Route::get('/product/{product}', [ProductController::class, 'permalink'])->name('product.permalink');
-Route::post('/cart/add', [ShoppingCartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart', [ShoppingCartController::class, 'index'])->name('cart.index');
+
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group(function () {
 
