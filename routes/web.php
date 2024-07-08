@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
@@ -29,6 +30,7 @@ Route::view("/about", "about")->name('about');
 Route::get("/shop", [ShopController::class, 'index'])->name('shop');
 Route::get("/contact", [ContactController::class, 'index'])->name('contact');
 Route::get('/product/{product}', [ProductController::class, 'permalink'])->name('product.permalink');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group(function () {
