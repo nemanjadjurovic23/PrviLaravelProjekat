@@ -10,7 +10,7 @@
 
 @section("sadrzajStranice")
     <div class="container">
-        <form method="POST" action="{{ route('product.update', $product->id) }}">
+        <form method="POST" action="{{ route('product.update', $product->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-row mt-4">
@@ -42,7 +42,7 @@
 
                 <div class="form-group col-md-6">
                     <label for="image">Image</label>
-                    <input type="text" class="form-control" id="image" name="image" value="{{ $product->image }}"
+                    <input type="file" class="form-control" id="image" name="image" value="{{ $product->image }}"
                            required>
                 </div>
             </div>

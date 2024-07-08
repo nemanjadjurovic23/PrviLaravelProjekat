@@ -18,7 +18,7 @@ class AddProductRequest extends FormRequest
             "description" => "required|string",
             "amount" => "required|integer|min:0",
             "price" => "required|min:0",
-            "image" => "required|string"
+            "image" => "required|mimes:jpg,jpeg,png|max:2048",
         ];
     }
 }

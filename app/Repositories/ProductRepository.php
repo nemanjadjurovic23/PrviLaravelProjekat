@@ -14,14 +14,14 @@ class ProductRepository
         $this->productModel = new ProductsModel();
     }
 
-    public function createNew($request)
+    public function createNew($request, $imagePath)
     {
         $this->productModel->create([
             "name" => $request->get("name"),
             "description" => $request->get("description"),
             "amount" => $request->get("amount"),
             "price" => $request->get("price"),
-            "image" => $request->get("image")
+            "image" => $imagePath  // Save the image path
         ]);
     }
 
@@ -32,12 +32,14 @@ class ProductRepository
 
     public function updateProduct($request, ProductsModel $product)
     {
+        $imagePath = $request->file('image') ? $request->file('image')->store('products', 'public') : $product->image;
+
         $product->update([
             "name" => $request->get("name"),
             "description" => $request->get("description"),
             "amount" => $request->get("amount"),
             "price" => $request->get("price"),
-            "image" => $request->get("image")
+            "image" => $imagePath,
         ]);
     }
 }

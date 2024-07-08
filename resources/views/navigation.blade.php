@@ -24,7 +24,7 @@
                     <a class="nav-link" href="{{ route('contact.all') }}">All Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('product.add') }}">All Product</a>
+                    <a class="nav-link" href="{{ route('product.add') }}">Add Product</a>
                 </li>
             @endif
             @if(Auth::check())

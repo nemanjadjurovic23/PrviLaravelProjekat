@@ -22,6 +22,9 @@
                             @endif
                             <p class="card-text text-truncate">{{$product->description}}</p>
                             <p class="card-text text-truncate">${{$product->price}}</p>
+                            @if($product->image)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid">
+                            @endif
                             <a href="{{ route('product.permalink', ['product' => $product->id]) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
