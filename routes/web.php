@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/cart/add', [ShoppingCartController::class, 'addToCart'])->name('cart.add');
     Route::get('/cart', [ShoppingCartController::class, 'index'])->name('cart.index');
+    Route::post("/send", [ContactController::class, 'sendContact'])->name("send");
+
     Route::get('/cart/finish', [ShoppingCartController::class, 'finishOrder'])->name('cart.finish');
 });
 
@@ -40,7 +42,6 @@ Route::middleware(['auth', AdminCheckMiddleware::class])->prefix("admin")->group
         Route::get("/delete/{contact}", 'deleteContact')->name("delete");
         Route::get("/edit/{contact}", 'editContact')->name("edit");
         Route::put("/update/{contact}", 'updateContact')->name("update");
-        Route::post("/send", 'sendContact')->name("send");
     });
 
     Route::controller(ProductController::class)->prefix('/product')->name('product.')->group(function () {

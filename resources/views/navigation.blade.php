@@ -16,6 +16,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
+            @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('product.all') }}">All Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('contact.all') }}">All Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('product.add') }}">All Product</a>
+                </li>
+            @endif
             @if(Auth::check())
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"

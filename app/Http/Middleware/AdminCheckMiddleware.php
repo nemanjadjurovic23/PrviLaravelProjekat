@@ -9,11 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminCheckMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
+
     public function handle(Request $request, Closure $next): Response
     {
         $role = Auth::user()->role;

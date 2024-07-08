@@ -16,7 +16,7 @@ class SendContactRequest extends FormRequest
         return [
             "email" => "required|string",
             "subject" => "required|string",
-            "description" => "required|min:5|string",
+            "message" => "required|min:5|string",
         ];
     }
 }

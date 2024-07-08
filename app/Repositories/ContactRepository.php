@@ -18,7 +18,7 @@ class ContactRepository
         $this->contactModel->create([
             "email" => $request->get("email"),
             "subject" => $request->get("subject"),
-            "message" => $request->get("description")
+            "message" => $request->get("message")
         ]);
     }
 
