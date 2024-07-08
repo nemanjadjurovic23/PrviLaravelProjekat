@@ -1,5 +1,7 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,7 +18,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact</a>
             </li>
-            @if(\Illuminate\Support\Facades\Auth::user()->role == 'admin')
+            @if(auth()->user() && !is_null(auth()->user()->role) && auth()->user()->role == 'admin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('product.all') }}">All Products</a>
                 </li>

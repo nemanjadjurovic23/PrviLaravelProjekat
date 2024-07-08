@@ -20,6 +20,7 @@ class ShoppingCartController extends Controller
             if ($product) {
                 $combined[] = [
                     'name' => $product->name,
+                    'image' => $product->image,
                     'amount' => $item['amount'],
                     'price' => $product->price,
                     'total' => $item['amount'] * $product->price,

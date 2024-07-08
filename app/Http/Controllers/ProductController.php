@@ -23,10 +23,7 @@ class ProductController extends Controller
     }
     public function saveProduct(AddProductRequest $request)
     {
-        // Upload the image and get the path
         $imagePath = $request->file('image')->store('products', 'public');
-
-        // Save the product with the image path
         $this->productRepo->createNew($request, $imagePath);
 
         return redirect()->route("product.all");

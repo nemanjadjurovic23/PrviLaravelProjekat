@@ -23,7 +23,7 @@
                             <p class="card-text text-truncate">{{ $lastAdded->description }}</p>
                             <p class="card-text text-truncate">${{ $lastAdded->price }}</p>
                             <img class="img-fluid" src="{{ asset('storage/' . $lastAdded->image) }}" alt="{{ $lastAdded->name }}" />
-                            <a href="#" class="btn btn-primary">View Product</a>
+                            <a href="{{ route('product.permalink', ['product' => $lastAdded->id]) }}" class="btn btn-primary">View Product</a>
                         </div>
                     </div>
                 </div>
